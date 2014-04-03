@@ -1,0 +1,10 @@
+<h1>Upload New Photo</h1>
+
+<%= simple_form_for @photo, html: { multipart: true } do |f| %>
+  <%= f.file_field :image %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+
+  <%= f.button :submit, 'Add Photo' %>
+
+<% end %>
