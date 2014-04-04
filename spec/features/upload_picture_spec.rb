@@ -6,6 +6,7 @@ feature 'Upload picture to globespinnr', %q{
   So that they will appear to all site visitors
 } do
   scenario 'User uploads a picture with valid attributes' do
+    pre_count = Photo.count
     visit new_photo_path
 
     file_path = 'spec/features/waterfall.jpg'
@@ -14,8 +15,8 @@ feature 'Upload picture to globespinnr', %q{
     fill_in 'Location', with: 'Ivory Coast'
     click_on 'Add Photo'
 
-    expect(page).to have_content 'Snowflake'
     expect(page).to have_content 'Photo successfully added'
+    expect(Photo.count).to eq(pre_count + 1)
 
   end
 

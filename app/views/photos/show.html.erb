@@ -1,0 +1,6 @@
+<div><%= image_tag @photo.image_url %><div>
+<p><%= @photo.description %></p>
+
+<div><%= link_to 'Delete Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<div><%= link_to 'Back to photos', photos_path %></div>
+
