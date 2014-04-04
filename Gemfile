@@ -33,6 +33,8 @@ gem 'rmagick', require: false
 
 gem 'carrierwave'
 
+gem 'devise'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
