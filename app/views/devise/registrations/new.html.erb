@@ -7,6 +7,8 @@
     <%= f.input :first_name, label: 'First Name', autofocus: true %>
     <%= f.input :last_name, label: 'Last Name' %>
     <%= f.input :username %>
+    <%= f.label :avatar %>
+    <%= f.file_field :image %>
     <%= f.input :email, required: true %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, label: 'Password Confirmation', required: true %>

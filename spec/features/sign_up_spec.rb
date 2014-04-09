@@ -12,6 +12,8 @@ feature 'sign up', %q{
     fill_in 'First Name', with: 'Sterling'
     fill_in 'Last Name', with: 'Archer'
     fill_in 'Username', with: 'Blackturtleneck'
+    file_path = 'spec/features/waterfall.jpg'
+    attach_file('user_image', file_path)
     fill_in 'Email', with: 'spy@isis.com'
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
@@ -57,6 +59,22 @@ feature 'sign up', %q{
     click_on 'Sign Up'
 
     expect(page).to have_content('has already been taken')
+  end
+
+  scenario 'sign in fails with invalid image file' do
+    visit root_path
+    click_link 'Sign Up'
+    fill_in 'First Name', with: 'Sterling'
+    fill_in 'Last Name', with: 'Archer'
+    fill_in 'Username', with: 'Blackturtleneck'
+    file_path = 'spec/features/delete_image_spec.rb'
+    attach_file('user_image', file_path)
+    fill_in 'Email', with: 'spy@isis.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'Password Confirmation', with: 'password'
+    click_button 'Sign Up'
+
+    expect(page).to have_content "Please review the problems below:"
   end
 
 end

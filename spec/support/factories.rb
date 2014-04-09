@@ -9,8 +9,12 @@ FactoryGirl.define do
   factory :user do
     first_name 'Cyril'
     last_name 'Figgus'
-    username 'El contador'
-    email 'troller@isis.com'
+    sequence :username do |u|
+      'El contador#{u}'
+    end
+    sequence :email do |e|
+      'troller#{e}@isis.com'
+    end
     password 'password'
     password_confirmation 'password'
   end
