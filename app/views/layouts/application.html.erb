@@ -8,11 +8,34 @@
 </head>
 <body>
 
-<% if flash[:notice].present? %>
-  <p><%= flash[:notice] %></p>
-<% end %>
+  <div class='row'>
+    <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
+      <nav class='nav_bar'>
+        <ul>
+          <% if !user_signed_in? %>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <% else %>
+            <li>Welcome <%= current_user.first_name %></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <li><%= image_tag(current_user.avatar.url('avatar')) %></li>
+          <% end %>
+        </ul>
+      </nav>
+    <% end %>
 
-<%= yield %>
+
+
+  <% if flash[:notice].present? %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+
+  <% if flash[:alert].present? %>
+    <p><%= flash[:alert] %></p>
+  <% end %>
+
+
+  <%= yield %>
 
 </body>
 </html>

@@ -33,6 +33,8 @@ gem 'rmagick', require: false
 
 gem 'carrierwave'
 
+gem 'devise'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -44,7 +46,7 @@ group :development, :test do
   gem 'hirb'
   gem 'rspec-rails'
   gem 'pry-rails'
-
+  gem 'quiet_assets'
 end
 
 group :test do
