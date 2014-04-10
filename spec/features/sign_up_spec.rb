@@ -13,7 +13,7 @@ feature 'sign up', %q{
     fill_in 'Last Name', with: 'Archer'
     fill_in 'Username', with: 'Blackturtleneck'
     file_path = 'spec/features/waterfall.jpg'
-    attach_file('user_image', file_path)
+    attach_file('user_avatar', file_path)
     fill_in 'Email', with: 'spy@isis.com'
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
@@ -68,7 +68,7 @@ feature 'sign up', %q{
     fill_in 'Last Name', with: 'Archer'
     fill_in 'Username', with: 'Blackturtleneck'
     file_path = 'spec/features/delete_image_spec.rb'
-    attach_file('user_image', file_path)
+    attach_file('user_avatar', file_path)
     fill_in 'Email', with: 'spy@isis.com'
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'

@@ -46,7 +46,7 @@ group :development, :test do
   gem 'hirb'
   gem 'rspec-rails'
   gem 'pry-rails'
-
+  gem 'quiet_assets'
 end
 
 group :test do
