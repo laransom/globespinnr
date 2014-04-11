@@ -2,10 +2,10 @@
 
 
 <%= simple_form_for @photo, html: { multipart: true } do |f| %>
+  <%= f.hidden_field :location_id, value: 2 %>
   <%= f.label :image %>
   <%= f.file_field :image %>
   <%= f.input :description %>
-  <%= f.input :location %>
 
   <%= f.button :submit, 'Add Photo' %>
 

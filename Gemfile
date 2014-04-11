@@ -52,6 +52,7 @@ end
 group :test do
 
   gem 'capybara'
+  gem 'poltergeist'
   gem 'launchy'
   gem 'valid_attribute'
   gem 'shoulda'

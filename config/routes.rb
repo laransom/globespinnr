@@ -1,6 +1,6 @@
 Globespinnr::Application.routes.draw do
 
-  root 'photos#index'
+  root 'locations#index'
   devise_for :users
   resources :photos, only: [:index, :show, :new, :create, :destroy]
   resources :locations, only: [:index, :show]

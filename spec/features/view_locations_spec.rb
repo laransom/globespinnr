@@ -8,7 +8,7 @@ feature 'user can view locations and associated photos', %q{
 
   scenario 'views a specific locale' do
     FactoryGirl.create(:location)
-    visit locations_path
+    visit root_path
     select 'France', from: 'country'
     click_on 'Go'
 

@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+  before_filter :authenticate_user!, only: [:create, :new]
+
   def index
     @photos = Photo.all
   end
@@ -10,10 +12,12 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    @locations = Location.all.map { |l| [l.name, l.id] }
   end
 
   def create
     @photo = Photo.new(photo_params)
+    @photo.user = current_user
     if @photo.save
       redirect_to photos_path, notice: 'Photo successfully added'
     else
@@ -32,7 +36,7 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:description, :location, :image)
+    params.require(:photo).permit(:description, :location_id, :image)
   end
 
 end
