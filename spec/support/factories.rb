@@ -19,4 +19,8 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :location do
+    name 'France'
+  end
+
 end
