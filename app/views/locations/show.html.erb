@@ -1,1 +1,9 @@
 <h1><%= @location.name %></h1>
+
+<% @location.photos.each do |photo| %>
+  <ul>
+    <li><%=link_to image_tag(photo.image_url('thumb')), photo %></li>
+  </ul>
+<% end %>
+
+<p><%= link_to 'Add Photo', new_location_photo_path(@location) %></p>

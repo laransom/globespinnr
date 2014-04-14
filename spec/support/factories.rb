@@ -3,7 +3,8 @@ FactoryGirl.define do
   factory :photo do
     image File.open('spec/features/waterfall.jpg')
     description 'A beautiful waterfall'
-    location 'Peru'
+    location
+    user
   end
 
   factory :user do
