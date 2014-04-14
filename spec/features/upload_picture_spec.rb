@@ -25,7 +25,6 @@ feature 'Upload picture to globespinnr', %q{
       attach_file('photo_image', file_path)
       fill_in 'Description', with: 'Snowflake'
       click_on 'Add Photo'
-      save_and_open_page
 
 
       expect(page).to have_content 'Photo successfully added'

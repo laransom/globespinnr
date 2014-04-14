@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
-  before_filter :authenticate_user!, only: [:create, :new]
+  before_filter :authenticate_user!, only: [:new, :create]
 
   def index
     @photos = Photo.all
@@ -12,14 +12,17 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
-    @locations = Location.all.map { |l| [l.name, l.id] }
+    @location = Location.find(params[:location_id])
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    binding.pry
+    @location = Location.find(params[:photo][:location_id])
+    @photo = @location.photos.build(photo_params)
     @photo.user = current_user
+
     if @photo.save
-      redirect_to photos_path, notice: 'Photo successfully added'
+      redirect_to location_path(@location), notice: 'Photo successfully added'
     else
       flash[:notice] = 'Upload unsuccessful'
       render :new
