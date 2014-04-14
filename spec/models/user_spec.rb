@@ -9,4 +9,7 @@ describe User do
 
   it { should have_valid(:username).when('francoise', 'user2love') }
   it { should_not have_valid(:first_name).when(nil, '') }
+
+  it { should have_many(:photos) }
+  it { should have_many(:comments) }
 end

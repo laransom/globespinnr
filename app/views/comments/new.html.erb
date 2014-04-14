@@ -1,0 +1,6 @@
+<h1>Add A Comment</h1>
+
+<%= simple_form_for [@photo, @comment] do |f| %>
+  <%= f.input :body %>
+  <%= f.button :submit, 'Add Comment' %>
+<% end %>
