@@ -1,6 +1,13 @@
 <h1>Add A Comment</h1>
 
-<%= simple_form_for [@photo, @comment] do |f| %>
-  <%= f.input :body %>
-  <%= f.button :submit, 'Add Comment' %>
+<% if params[:location_id] == nil%>
+  <%= simple_form_for [@photo, @comment] do |f| %>
+    <%= f.input :body %>
+    <%= f.button :submit, 'Add Comment' %>
+  <% end %>
+<% else %>
+    <%= simple_form_for [@location, @comment] do |f| %>
+      <%= f.input :body %>
+      <%= f.button :submit, 'Add Comment' %>
+  <% end %>
 <% end %>

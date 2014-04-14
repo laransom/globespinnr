@@ -4,11 +4,12 @@ Globespinnr::Application.routes.draw do
   devise_for :users
 
   resources :photos, only: [:create, :show, :destroy] do
-    resources :comments, only: [:new, :create, :show]
+    resources :comments, only: [:new, :create]
   end
 
   resources :locations, only: [:index, :show] do
     resources :photos, only: [:new, :create]
+    resources :comments, only: [:new, :create]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

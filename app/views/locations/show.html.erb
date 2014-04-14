@@ -8,6 +8,18 @@
   </ul>
 </div>
 
+<h3>Comments</h3>
+<div><%= link_to 'Comment', new_location_comment_path(@location) %></div>
+  <% if @location.comments.present? %>
+    <div>
+      <ul>
+        <% @location.comments.each do |comment| %>
+          <li><%= comment.body %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <p>
   <%= link_to 'Add Photo', new_location_photo_path(@location) %><br>
   <%= link_to 'Back', root_path %>

@@ -42,7 +42,7 @@ feature 'comment on a picture or location', %q{
 
     scenario 'user comments on location' do
       pre_count = Comment.count
-      location_path(photo.location)
+      visit location_path(photo.location)
 
       click_on 'Comment'
 

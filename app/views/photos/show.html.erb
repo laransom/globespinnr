@@ -1,7 +1,6 @@
 <div><%= image_tag @photo.image_url %><div>
 <p><%= @photo.description %></p>
 
-
 <h3>Comments</h3>
   <div><%= link_to 'Add Comment', new_photo_comment_path(@photo) %></div>
   <% if @photo.comments.present? %>
