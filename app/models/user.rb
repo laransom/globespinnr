@@ -13,4 +13,15 @@ class User < ActiveRecord::Base
   has_many :likes
 
 
+  def full_name
+    first_name + ' ' + last_name
+  end
+
+  def self.most_liked(user)
+    user.photos.order(likes_count: :desc).limit(5)
+  end
+
+  def self.recent_comments(user)
+    user.comments.order(created_at: :desc).limit(10)
+  end
 end
