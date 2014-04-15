@@ -9,7 +9,11 @@ feature 'delete photo from globespinnr', %q{
     photo = FactoryGirl.create(:photo)
     photo_count = Photo.count
     visit location_path(photo.location)
-    click_on 'a'
+
+    within "#photos" do
+      first(:link, 'a').click
+    end
+
     click_on 'Delete Photo'
 
     expect(Photo.count).to eq(photo_count -1)

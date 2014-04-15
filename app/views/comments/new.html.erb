@@ -1,0 +1,13 @@
+<h1>Add A Comment</h1>
+
+<% if params[:location_id] == nil%>
+  <%= simple_form_for [@photo, @comment] do |f| %>
+    <%= f.input :body, as: :text %>
+    <%= f.button :submit, 'Add Comment' %>
+  <% end %>
+<% else %>
+    <%= simple_form_for [@location, @comment] do |f| %>
+      <%= f.input :body, as: :text %>
+      <%= f.button :submit, 'Add Comment' %>
+  <% end %>
+<% end %>

@@ -1,9 +1,26 @@
 <h1><%= @location.name %></h1>
 
-<% @location.photos.each do |photo| %>
+<div id='photos'>
   <ul>
-    <li><%=link_to image_tag(photo.image_url('thumb')), photo %></li>
+    <% @location.photos.each do |photo| %>
+      <li><%=link_to image_tag(photo.image_url('thumb')), photo %></li>
+    <% end %>
   </ul>
-<% end %>
+</div>
 
-<p><%= link_to 'Add Photo', new_location_photo_path(@location) %></p>
+<h3>Comments</h3>
+<div><%= link_to 'Comment', new_location_comment_path(@location) %></div>
+  <% if @location.comments.present? %>
+    <div>
+      <ul>
+        <% @location.comments.each do |comment| %>
+          <li><%= comment.body %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <%= link_to 'Add Photo', new_location_photo_path(@location) %><br>
+  <%= link_to 'Back', root_path %>
+</p>

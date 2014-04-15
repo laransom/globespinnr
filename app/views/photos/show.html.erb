@@ -1,6 +1,19 @@
 <div><%= image_tag @photo.image_url %><div>
 <p><%= @photo.description %></p>
 
-<div><%= link_to 'Delete Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-<div><%= link_to 'Back to photos', photos_path %></div>
+<h3>Comments</h3>
+  <div><%= link_to 'Add Comment', new_photo_comment_path(@photo) %></div>
+  <% if @photo.comments.present? %>
+    <div>
+      <ul>
+        <% @photo.comments.each do |comment| %>
+          <li><%= comment.body %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div><%= link_to 'Delete Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  <div><%= link_to 'Back to photos', photos_path %></div>
 

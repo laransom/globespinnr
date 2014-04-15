@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Upload picture to globespinnr', %q{
-  As an authinticated user
+  As an authenticated user
   I should be able to post pictures to a specific location
   So that it will appear on that locations page
 } do
