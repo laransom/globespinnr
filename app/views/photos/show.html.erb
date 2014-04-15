@@ -1,6 +1,17 @@
 <div><%= image_tag @photo.image_url %><div>
 <p><%= @photo.description %></p>
 
+<div>
+  <h3>Likes</h3>
+    <div><%= @photo.likes.count %></div>
+</div>
+  <%= simple_form_for @like do |f| %>
+    <%= f.hidden_field :photo_id, value: @photo.id %>
+    <%= f.hidden_field :score, value: 1 %>
+    <%= f.button :submit, 'Like' %>
+  <% end %>
+</div>
+
 <h3>Comments</h3>
   <div><%= link_to 'Add Comment', new_photo_comment_path(@photo) %></div>
   <% if @photo.comments.present? %>
