@@ -42,11 +42,4 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body, :commentable_id, :commentable_type)
   end
 
-  # def find_commentable
-  #   params.each do |name, value|
-  #     if name =~ /(.+)_id$W/
-  #       return $1.classify.constantize.find(value)
-  #     end
-  #   end
-  # end
 end

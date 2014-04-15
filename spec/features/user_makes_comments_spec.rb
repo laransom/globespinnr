@@ -53,5 +53,17 @@ feature 'comment on a picture or location', %q{
       expect(page).to have_content 'I love this place'
       expect(Photo.count).to eq(pre_count + 1)
     end
+
+      scenario 'user fails to enter content' do
+        pre_count = Comment.count
+        visit location_path(photo.location)
+
+        click_on 'Comment'
+
+        click_on 'Add Comment'
+
+        expect(page).to have_content "can't be blank"
+        expect(Comment.count).to eq(pre_count)
+      end
   end
 end
