@@ -26,5 +26,5 @@
 
 
   <div><%= link_to 'Delete Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-  <div><%= link_to 'Back to photos', photos_path %></div>
+  <div><%= link_to 'Back to photos', location_path(@photo.location) %></div>
 
