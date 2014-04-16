@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-  let(:user) { FactoryGirl.create(:user)}
+  let(:user) { FactoryGirl.create(:user)}S
 
   it { should have_valid(:first_name).when('George', 'Pete') }
   it { should_not have_valid(:first_name).when(nil, '') }
