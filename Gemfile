@@ -35,6 +35,8 @@ gem 'carrierwave'
 
 gem 'devise'
 
+gem 'foundation-rails'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -52,7 +54,6 @@ end
 group :test do
 
   gem 'capybara'
-  gem 'poltergeist'
   gem 'launchy'
   gem 'valid_attribute'
   gem 'shoulda'

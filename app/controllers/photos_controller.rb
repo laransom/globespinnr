@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
 
-    if @photo.user_id == current_user
+    if @photo.user == current_user
       @photo.destroy
       respond_to do |format|
         format.html {redirect_to locations_path(@photo.location)}
