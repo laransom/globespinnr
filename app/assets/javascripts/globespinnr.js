@@ -2,7 +2,7 @@ $(document).ready(function() {
   var str = '';
   $('#country').change(function() {
     $('select option:selected').each(function() {
-      str += $(this).val();
+      str = $(this).val();
     });
   });
 
