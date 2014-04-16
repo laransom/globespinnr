@@ -11,24 +11,6 @@
     <div class='small-12 large_centered columns'><%= select_tag :country, options_from_collection_for_select(@locations, 'id', 'name'), include_blank: true %></div>
   </div>
   <div class='row'>
-    <div class='1-medium small-centered columns'><a href='#' class='button'>Go</a></div>
+    <div class='1-medium small-centered columns' id='submit'><a href='#' class='button'>Go</a></div>
   </div>
 
-<script>
-  var str = '';
-  $('#country').change(function() {
-    $('select option:selected').each(function() {
-      str += $(this).val();
-    });
-  });
-
-
-  $(document).ready(function() {
-    $('#submit').click(function() {
-      var path = $('#country').val();
-      window.location.assign("/locations/" + str);
-    });
-  });
-
-
-</script>
