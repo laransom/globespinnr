@@ -1,12 +1,18 @@
-<h1>Globespinnr</h1>
+<div class='row'>
+   <div class="small-6 large-centered columns text-center"><h1>Globespinnr</h1></div>
+</div>
+
+<div class='row'>
+   <div class="small-6 large-centered columns text-center"><h3>Select a Country</h3></div>
+</div>
 
 
-<h3>Select a Country</h3>
-
-
-
-  <div id='country'><%= select_tag :country, options_from_collection_for_select(@locations, 'id', 'name'), include_blank: true %></div>
-  <div id='submit'><a href='#' class='button'>Go</a></div>
+  <div class='row'>
+    <div class='small-12 large_centered columns'><%= select_tag :country, options_from_collection_for_select(@locations, 'id', 'name'), include_blank: true %></div>
+  </div>
+  <div class='row'>
+    <div class='1-medium small-centered columns'><a href='#' class='button'>Go</a></div>
+  </div>
 
 <script>
   var str = '';
