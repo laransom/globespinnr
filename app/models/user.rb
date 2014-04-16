@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
   def self.recent_comments(user)
     user.comments.order(created_at: :desc).limit(10)
   end
+
+  def is_admin?
+    role == 'admin'
+  end
 end
