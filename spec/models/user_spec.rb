@@ -2,13 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-  let(:user) { FactoryGirl.create(:user)}
-  let(:photo_1) { FactoryGirl.create(:photo) }
-  let(:photo_2) { FactoryGirl.create(:photo) }
-  let(:photo_3) { FactoryGirl.create(:photo) }
-  let(:photo_4) { FactoryGirl.create(:photo) }
-  let(:photo_5) { FactoryGirl.create(:photo) }
-
+  let(:user) { FactoryGirl.create(:user)}S
 
   it { should have_valid(:first_name).when('George', 'Pete') }
   it { should_not have_valid(:first_name).when(nil, '') }

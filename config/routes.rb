@@ -16,6 +16,12 @@ Globespinnr::Application.routes.draw do
   end
 
   resources :likes, only: [:create]
+
+  # resources :admin do
+  #   resources :photos, only: [:destroy]
+  #   resources :comments, only: [:edit, :destroy]
+  # end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
