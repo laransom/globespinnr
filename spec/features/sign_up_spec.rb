@@ -17,7 +17,9 @@ feature 'sign up', %q{
     fill_in 'Email', with: 'spy@isis.com'
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
+    within(:css, 'form') do
+      click_button 'Sign Up'
+    end
 
     expect(page).to have_content "Welcome! You have signed up successfully"
     expect(page).to have_content "Sign Out"
@@ -26,7 +28,9 @@ feature 'sign up', %q{
   scenario 'required information is not supplied' do
     visit root_path
     click_link 'Sign Up'
-    click_on 'Sign Up'
+    within(:css, 'form') do
+      click_button 'Sign Up'
+    end
 
     expect(page).to have_content("can't be blank")
   end
@@ -36,7 +40,9 @@ feature 'sign up', %q{
     click_link 'Sign Up'
     fill_in 'user_password', with: 'firstpassword'
     fill_in 'Password Confirmation', with: 'newpassword'
-    click_on 'Sign Up'
+    within(:css, 'form') do
+      click_button 'Sign Up'
+    end
 
     expect(page).to have_content("doesn't match Password")
   end
@@ -46,7 +52,9 @@ feature 'sign up', %q{
     click_link 'Sign Up'
     user = FactoryGirl.create(:user)
     fill_in 'Email', with: user.email
-    click_on 'Sign Up'
+    within(:css, 'form') do
+      click_button 'Sign Up'
+    end
 
     expect(page).to have_content('has already been taken')
   end
@@ -56,7 +64,9 @@ feature 'sign up', %q{
     click_link 'Sign Up'
     user = FactoryGirl.create(:user)
     fill_in 'Username',  with: user.username
-    click_on 'Sign Up'
+    within(:css, 'form') do
+      click_button 'Sign Up'
+    end
 
     expect(page).to have_content('has already been taken')
   end
@@ -72,7 +82,9 @@ feature 'sign up', %q{
     fill_in 'Email', with: 'spy@isis.com'
     fill_in 'user_password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
+    within(:css, 'form') do
+      click_button 'Sign Up'
+    end
 
     expect(page).to have_content "Please review the problems below:"
   end
