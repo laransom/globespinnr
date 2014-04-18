@@ -1,41 +1,58 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Globespinnr</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <div class='row'>
-    <% if request.env['PATH_INFO'] != new_user_registration_path && request.env['PATH_INFO'] != '/users' %>
-      <nav class='nav_bar'>
-        <ul>
+    <title><%= content_for?(:title) ? yield(:title) : "Globespinnr" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag "application" %>
+  </head>
+
+  <body>
+
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to 'Globespinnr', root_path%></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <% if user_signed_in? %>
+          <li class='avatar'><%= link_to image_tag(current_user.avatar.url('avatar')), user_path(current_user) %></li>
+        <% end %>
+        <li class="has-dropdown">
           <% if !user_signed_in? %>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <a href="#">Welcome</a>
+            <ul class="dropdown">
+              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+              <li><%= link_to 'Sign In', new_user_session_path %></li>
+            </ul>
           <% else %>
-            <li>Welcome <%= current_user.first_name %></li>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to image_tag(current_user.avatar.url('avatar')), user_path(current_user) %></li>
+            <a href="#">Welcome <%= current_user.first_name %></a>
+            <ul class="dropdown">
+              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            </ul>
           <% end %>
-        </ul>
-      </nav>
+        </li>
+      </ul>
+    </nav>
+
+    <% if flash[:notice].present? %>
+      <div><%= flash[:notice] %></div>
     <% end %>
 
+    <% if flash[:alert].present? %>
+      <div><%= flash[:alert] %></div>
+    <% end %>
 
+    <%= yield %>
 
-  <% if flash[:notice].present? %>
-    <p><%= flash[:notice] %></p>
-  <% end %>
-
-  <% if flash[:alert].present? %>
-    <p><%= flash[:alert] %></p>
-  <% end %>
-
-
-  <%= yield %>
-
-</body>
+  </body>
 </html>

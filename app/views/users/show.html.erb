@@ -1,17 +1,31 @@
-<h1><%= @user.full_name %></h1>
-
-<div>
-  <h3>Most liked photos</h3>
-  <% User.most_liked(@user).each do |photo| %>
-    <li><%=link_to image_tag(photo.image_url('thumb')), photo %></li>
-  <% end %>
+<div class='row'>
+  <div class='small-6 large-centered columns text-center'><h1><%= @user.full_name %></h1></div>
 </div>
 
-<div>
-  <h3>Recent Comments</h3>
-  <% User.recent_comments(@user).each do |comment| %>
-    <li><%= comment.body %></li>
-  <% end %>
+<div class='row'>
+  <div class='small-6 large-centered columns text-center'>
+    <h3>Places Visited</h3>
+    <ul>
+      <% @user.photos.each do |photo| %>
+        <li><%= photo.location.name %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
+<div class='row'>
+  <div class='large-6 columns text-center'>
+    <h3>Most liked photos</h3>
+    <% User.most_liked(@user).each do |photo| %>
+      <li><%=link_to image_tag(photo.image_url('thumb')), photo %></li>
+    <% end %>
+  </div>
+
+  <div class='large-6 columns text-center'>
+    <h3>Recent Comments</h3>
+    <% User.recent_comments(@user).each do |comment| %>
+      <li><%= comment.body %></li>
+    <% end %>
+  </div>
+</div>
 

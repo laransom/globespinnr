@@ -24,7 +24,7 @@
     </div>
   <% end %>
 
-  <% if @photo.user_id == current_user %>
+  <% if @photo.user == current_user %>
     <div><%= link_to 'Delete Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' } %></div>
   <% end %>
   <div><%= link_to "Back to #{@photo.location.name}", location_path(@photo.location) %></div>
