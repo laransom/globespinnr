@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require three.min
-//= require_tree .
+//= require OrbitControls
+//= require_tree
 
 //= require foundation
 $(function(){ $(document).foundation(); });

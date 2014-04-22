@@ -21,6 +21,7 @@
   </head>
 
   <body>
+
     <script>
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
@@ -29,15 +30,24 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
+      camera.position.z = 1;
+
       // var ambientLight = new THREE.AmbientLight(0x000044);
       // scene.add(ambientLight);
 
       var pointLight = new THREE.PointLight(0xFFFFFF);
-        pointLight.position.x = 50;
-        pointLight.position.y = 100;
-        pointLight.position.z = 200;
+        pointLight.position = camera.position;
+        // pointLight.position.y = 100;
+        // pointLight.position.z = 200;
 
         scene.add(pointLight);
+
+        // var pointLights = new THREE.PointLight(0xFFFFFF);
+        //   pointLights.position.x = 50;
+        //   pointLights.position.y = 100;
+        //   pointLights.position.z = -200;
+
+        //   scene.add(pointLights);
 
 
 
@@ -95,9 +105,10 @@
       //   var mesh = THREE.Mesh(geometry, material);
       //   scene.add(mesh);
 
-      camera.position.z = 1;
+      // camera.position.z = 1;
       // cube.position.x = -10;
 
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 
       var render = function () {
@@ -108,6 +119,7 @@
         // cube.position.x += 0.03;
 
         renderer.render(scene, camera);
+        controls.update();
       };
 
       render();
