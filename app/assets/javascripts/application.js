@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require three.min
 //= require_tree .
 
 //= require foundation
