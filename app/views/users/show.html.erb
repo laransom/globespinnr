@@ -23,9 +23,13 @@
     <div id='photos'>
       <div class='content'>
         <h3>Popular Photos</h3>
-        <ul class='small-block-grid-1 medium-block-grid-4 large-block-grid 4'>
+        <ul class='most-liked' data-orbit>
           <% @user.most_liked.each do |photo| %>
-            <li><%= link_to image_tag(photo.image_url('thumb')), photo %></li>
+            <li><%= image_tag(photo.image_url('thumb')) %>
+              <div class='orbit-caption'>
+                <%= photo.description %>
+              </div>
+            </li>
           <% end %>
         </ul>
       </div>

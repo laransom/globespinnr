@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def most_liked
-    photos.order(likes_count: :desc).limit(8)
+    photos.order(likes_count: :desc).limit(5)
   end
 
   def recent_comments
