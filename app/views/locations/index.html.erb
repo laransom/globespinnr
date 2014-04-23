@@ -41,6 +41,8 @@
       var render = function () {
         requestAnimationFrame(render);
 
+        earthMesh.rotation.y += 0.0004;
+
         renderer.render(scene, camera);
         trackballControls.update();
       };
