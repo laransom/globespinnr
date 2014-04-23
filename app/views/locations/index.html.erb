@@ -1,21 +1,3 @@
-<!-- <div class='row'>
-   <div class="small-6 large-centered columns text-center"><h1>Globespinnr</h1></div>
-</div>
-
-<div class='row'>
-   <div class="small-6 large-centered columns text-center"><h3>Select a Country</h3></div>
-</div>
-
-
-  <div class='row'>
-    <div class='small-12 large_centered columns'><%= select_tag :country, options_from_collection_for_select(@locations, 'id', 'name'), include_blank: true %></div>
-  </div>
-  <div class='row'>
-    <div class='1-medium small-centered columns' id='submit'><a href='#' class='button'>Go</a></div>
-  </div> -->
-
-
-
     <style>canvas { width: 100%; height: 100% }</style>
 
     <script>
@@ -64,4 +46,17 @@
       };
 
       render();
+
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+      };
+
+      $('body').dblclick(function() {
+        window.location.assign("/locations/" + <%= rand(1..252) %>);
+      });
+
+
     </script>
