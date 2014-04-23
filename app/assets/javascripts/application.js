@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require three.min
-//= require OrbitControls
+//= require TrackBallControls
 //= require_tree
 
 //= require foundation
