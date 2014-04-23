@@ -5,3 +5,7 @@
 #countries.dropdown:hover {
   overflow-y: auto;
 }
+
+li {
+  list-style-type: none;
+}

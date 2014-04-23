@@ -1,31 +1,36 @@
+<br>
 <div class='row'>
-  <div class='small-6 large-centered columns text-center'><h1><%= @user.full_name %></h1></div>
-</div>
+  <div class='small-3 large-3 columns'>
+    <div id='sidebar-left'>
+      <div class='info'>
+        <div class='avatar'>
+          <%= image_tag(@user.avatar.url('thumb')) %>
+        </div>
+        <h4><%= @user.full_name %></h4><br>
+        <h6>Places Visited</h6>
+        <ul class="side-nav">
+          <% @user.places_visited.each do |country| %>
+            <li><%= link_to country.name, location_path(country) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<div class='row'>
-  <div class='small-6 large-centered columns text-center'>
-    <h3>Places Visited</h3>
-    <ul>
-      <% @user.photos.each do |photo| %>
-        <li><%= photo.location.name %></li>
-      <% end %>
-    </ul>
+
+
+  <div class='small-9 large-9 columns text-center'>
+    <div id='photos'>
+      <div class='content'>
+        <h3>Popular Photos</h3>
+        <ul class='small-block-grid-1 medium-block-grid-4 large-block-grid 4'>
+          <% @user.most_liked.each do |photo| %>
+            <li><%= link_to image_tag(photo.image_url('thumb')), photo %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class='row'>
-  <div class='large-6 columns text-center'>
-    <h3>Most liked photos</h3>
-    <% User.most_liked(@user).each do |photo| %>
-      <li><%=link_to image_tag(photo.image_url('thumb')), photo %></li>
-    <% end %>
-  </div>
-
-  <div class='large-6 columns text-center'>
-    <h3>Recent Comments</h3>
-    <% User.recent_comments(@user).each do |comment| %>
-      <li><%= comment.body %></li>
-    <% end %>
-  </div>
-</div>
 

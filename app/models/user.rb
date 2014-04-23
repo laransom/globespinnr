@@ -17,12 +17,22 @@ class User < ActiveRecord::Base
     first_name + ' ' + last_name
   end
 
-  def self.most_liked(user)
-    user.photos.order(likes_count: :desc).limit(5)
+  def most_liked
+    photos.order(likes_count: :desc).limit(8)
   end
 
-  def self.recent_comments(user)
-    user.comments.order(created_at: :desc).limit(10)
+  def recent_comments
+    comments.order(created_at: :desc).limit(10)
+  end
+
+  def places_visited
+    visited = []
+    photos.each do |photo|
+      unless visited.include?(photo.location)
+        visited << photo.location
+      end
+    end
+    visited
   end
 
   def is_admin?
