@@ -4,7 +4,7 @@
     <div id='sidebar-left'>
       <div class='info'>
         <div class='avatar'>
-          <%= image_tag(@user.avatar.url('thumb')) %>
+          <%= image_tag(@user.avatar.url('profile')) %>
         </div>
         <h4><%= @user.full_name %></h4><br>
         <h6>Places Visited</h6>
@@ -33,4 +33,19 @@
   </div>
 </div>
 
-
+<div class='row'>
+  <div class='small-3 large-3 columns'>
+  </div>
+  <div class='small-9 large-9 columns text-center'>
+    <div id='comments'>
+      <div class='content'>
+        <h3>Recent Comments</h3>
+        <ul class='small-block-grid-1 medium-block-grid-1 large-block-grid 1'>
+          <% @user.recent_comments.each do |comment| %>
+            <li><%= comment.body %></li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

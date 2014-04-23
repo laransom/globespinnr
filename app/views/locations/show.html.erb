@@ -1,26 +1,33 @@
-<h1><%= @location.name %></h1>
+<br>
+<div class='row'>
+  <div class='small-3 large-3 columns'>
+    <div id='sidebar-left'>
+      <div class='info'>
+        <h2><%= @location.name %></h2><br>
 
-<div id='photos'>
-  <ul>
-    <% @location.photos.each do |photo| %>
-      <li><%=link_to image_tag(photo.image_url('thumb')), photo %></li>
-    <% end %>
-  </ul>
-</div>
-
-<h3>Comments</h3>
-<div><%= link_to 'Comment', new_location_comment_path(@location) %></div>
-  <% if @location.comments.present? %>
-    <div>
-      <ul>
-        <% @location.comments.each do |comment| %>
-          <li><%= comment.body %></li>
-        <% end %>
-      </ul>
+        <ul class="side-nav">
+          <li><%= link_to 'Add Photo', new_location_photo_path(@location) %></li>
+          <li><%= link_to 'Add Comment', new_location_comment_path(@location) %></li>
+          <h5>Comments</h5>
+          <% @location.comments.each do |comment| %>
+            <li><%= comment.body %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  <% end %>
+  </div>
 
-<p>
-  <%= link_to 'Add Photo', new_location_photo_path(@location) %><br>
-  <%= link_to 'Back', root_path %>
-</p>
+
+
+  <div class='small-9 large-9 columns text-center'>
+    <div id='photos'>
+      <div class='content'>
+        <ul class='small-block-grid-1 medium-block-grid-1 large-block-grid 1'>
+          <% @location.photos.each do |photo| %>
+            <li><%=link_to image_tag(photo.image_url('show')), photo %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
