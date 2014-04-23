@@ -36,6 +36,8 @@ gem 'devise'
 
 gem 'foundation-rails'
 
+gem 'fog'
+
 
 
 
