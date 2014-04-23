@@ -1,0 +1,7 @@
+#countries.dropdown {
+  overflow-y: hidden;
+}
+
+#countries.dropdown:hover {
+  overflow-y: auto;
+}

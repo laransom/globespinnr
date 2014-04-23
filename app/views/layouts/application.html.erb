@@ -24,6 +24,15 @@
 
     <section class="top-bar-section">
       <ul class="right">
+        <li class='has-dropdown'>
+          <a href="#">Choose Country</a>
+          <ul id="countries" class="dropdown">
+            <% Location.all.each do |location| %>
+              <li><%= link_to location.name, location_path(location) %></li>
+            <% end %>
+          </ul>
+        </li>
+
         <% if user_signed_in? %>
           <li class='avatar'><%= link_to image_tag(current_user.avatar.url('avatar')), user_path(current_user) %></li>
         <% end %>
