@@ -26,9 +26,9 @@
       <ul class="right">
         <li class='has-dropdown'>
           <a href="#">Choose Country</a>
-          <ul class="dropdown">
+          <ul id="countries" class="dropdown">
             <% Location.all.each do |location| %>
-              <li><%= location.name %></li>
+              <li><%= link_to location.name, location_path(location) %></li>
             <% end %>
           </ul>
         </li>

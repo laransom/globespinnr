@@ -54,7 +54,8 @@
         renderer.setSize( window.innerWidth, window.innerHeight );
       };
 
-      $('body').dblclick(function() {
+      $('canvas').dblclick(function() {
+        event.preventDefault();
         window.location.assign("/locations/" + <%= rand(1..252) %>);
       });
 
