@@ -36,6 +36,9 @@ gem 'devise'
 
 gem 'foundation-rails'
 
+gem 'fog'
+
+
 
 
 group :doc do
@@ -49,6 +52,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'dotenv-rails'
 end
 
 group :test do
