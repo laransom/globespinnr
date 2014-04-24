@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  process resize_to_fit: [600, 600]
+  process resize_to_fit: [1000, 1000]
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production? || Rails.env.devlopment?
@@ -39,7 +39,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fill: [1200, 300]
+    process resize_to_fill: [1200, 500]
   end
 
   version :profile do

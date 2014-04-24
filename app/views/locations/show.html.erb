@@ -4,30 +4,39 @@
     <div id='sidebar-left'>
       <div class='info'>
         <h2><%= @location.name %></h2><br>
-
         <ul class="side-nav">
           <li><%= link_to 'Add Photo', new_location_photo_path(@location) %></li>
           <li><%= link_to 'Add Comment', new_location_comment_path(@location) %></li>
           <h5>Comments</h5>
-          <% @location.comments.each do |comment| %>
-            <li><%= comment.body %></li>
-          <% end %>
+          <div class='comments'>
+            <ul class='small-block-grid-1 large-block-grid 1'>
+              <% @location.comments.each do |comment| %>
+                <div class='panel'>
+                  <div class='media'>
+                    <div class='media-img'>
+                      <img src='<%= comment.user.avatar.url("avatar") %>'>
+                    </div>
+                    <h6><%= comment.user.full_name %></h6>
+                    <p><%= comment.body %></p>
+                  </div>
+                </div>
+              <% end %>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
   </div>
 
-
-
   <div class='small-9 large-9 columns text-center'>
-    <div id='photos'>
-      <div class='content'>
-        <ul class='small-block-grid-1 medium-block-grid-1 large-block-grid 1'>
-          <% @location.photos.each do |photo| %>
-            <li><%=link_to image_tag(photo.image_url('show')), photo %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div class='content'>
+      <ul class='small-block-grid-1 large-block-grid 1'>
+        <% @location.photos.each do |photo| %>
+          <li>
+            <%= link_to image_tag(photo.image_url('show')), photo %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>

@@ -1,31 +1,66 @@
-<div><%= image_tag @photo.image_url %><div>
-<p><%= @photo.description %></p>
+<br>
+<div class='row'>
+  <div class='small-12 large-12 columns text-center'>
+    <div class='content'>
+      <ul class='small-block-grid-1 large-block-grid 1'>
+          <li>
+            <%= image_tag @photo.image_url %>
+          </li>
 
-<div>
-  <h3>Likes</h3>
-    <div><%= @photo.likes.count %></div>
-</div>
-  <%= simple_form_for @like do |f| %>
-    <%= f.hidden_field :photo_id, value: @photo.id %>
-    <%= f.hidden_field :score, value: 1 %>
-    <%= f.button :submit, 'Like' %>
-  <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<h3>Comments</h3>
-  <div><%= link_to 'Add Comment', new_photo_comment_path(@photo) %></div>
-  <% if @photo.comments.present? %>
-    <div>
-      <ul>
+
+<div class='row'>
+  <div class='small-2 large-2 columns'>
+  </div>
+  <div class='small-10 large-10 columns text-center'>
+    <div class='buttons'>
+      <ul class='inline-list'>
+        <li>Likes: <%= @photo.likes.count %></li>
+        <li >
+          <%= simple_form_for @like do |f| %>
+            <%= f.hidden_field :photo_id, value: @photo.id %>
+            <%= f.hidden_field :score, value: 1 %>
+            <%= f.button :submit, 'Like', class: 'small button' %>
+          <% end %>
+        </li>
+        <li class='small button' id='button'><%= link_to 'Add Comment', new_photo_comment_path(@photo) %></li>
+        <% if @photo.user == current_user %>
+          <li class='small button' id='button'><%= link_to 'Delete Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <% end %>
+        <li class='small button' id='button'><%= link_to "Back to #{@photo.location.name}", location_path(@photo.location) %></li>
+        <li class='small button' id='button'><%= link_to "More from #{@photo.user.full_name}", user_path(@photo.user) %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class='row'>
+  <div class='small-6 small-centered large-6 large-centered columns'>
+    <div class='comments'>
+      <h3 class = 'text-center'>Comments</h3>
+      <ul class='small-block-grid-1 large-block-grid 1'>
         <% @photo.comments.each do |comment| %>
-          <li><%= comment.body %></li>
+          <div class='panel'>
+            <div class='media'>
+              <div class='media-img'>
+                <img src='<%= comment.user.avatar.url("avatar") %>'>
+              </div>
+              <h6><%= comment.user.full_name %></h6>
+              <p><%= comment.body %></p>
+            </div>
+          </div>
         <% end %>
       </ul>
     </div>
-  <% end %>
+  </div>
+</div>
 
-  <% if @photo.user == current_user %>
-    <div><%= link_to 'Delete Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-  <% end %>
-  <div><%= link_to "Back to #{@photo.location.name}", location_path(@photo.location) %></div>
+
 

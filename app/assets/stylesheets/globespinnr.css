@@ -10,5 +10,20 @@ li {
   list-style-type: none;
 }
 
-#comments li {
+.media {
+  display: block;
+}
+
+.media-img img {
+  float:left;
+  margin-right: 12px;
+  display:block;
+}
+
+#button a {
+  color: white;
+}
+
+.btn {
+  color: white;
 }

@@ -20,19 +20,17 @@
 
 
   <div class='small-9 large-9 columns text-center'>
-    <div id='photos'>
-      <div class='content'>
-        <h3>Popular Photos</h3>
-        <ul class='most-liked' data-orbit>
-          <% @user.most_liked.each do |photo| %>
-            <li><%= image_tag(photo.image_url('thumb')) %>
-              <div class='orbit-caption'>
-                <%= photo.description %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+    <div class='photos'>
+      <h3>Popular Photos</h3>
+      <ul class='most-liked' data-orbit>
+        <% @user.most_liked.each do |photo| %>
+          <li><%= image_tag(photo.image_url('thumb')) %>
+            <div class='orbit-caption'>
+              <%= photo.description %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
@@ -40,16 +38,23 @@
 <div class='row'>
   <div class='small-3 large-3 columns'>
   </div>
-  <div class='small-9 large-9 columns text-center'>
-    <div id='comments'>
-      <div class='content'>
-        <h3>Recent Comments</h3>
-        <ul class='small-block-grid-1 medium-block-grid-1 large-block-grid 1'>
-          <% @user.recent_comments.each do |comment| %>
-            <li><%= comment.body %></li>
-          <% end %>
-        </div>
-      </div>
+  <div class='small-9 large-9 columns'>
+    <h3>Recent Comments</h3>
+    <div class='comments'>
+      <ul class='small-block-grid-1 large-block-grid 1'>
+        <% @user.recent_comments.each do |comment| %>
+          <div class='panel'>
+            <div class='media'>
+              <div class='media-img'>
+                <img src='<%= comment.user.avatar.url("avatar") %>'>
+              </div>
+              <h6><%= comment.user.full_name %></h6>
+              <p><%= comment.body %></p>
+            </div>
+          </div>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
+
