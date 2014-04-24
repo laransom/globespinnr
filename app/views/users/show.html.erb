@@ -51,6 +51,13 @@
               <h6><%= comment.user.full_name %></h6>
               <p><%= comment.body %></p>
             </div>
+            <div class='small button' id='button'>
+              <% if comment.commentable.class == Photo %>
+                <%= link_to "Visit #{comment.commentable.location.name}", location_path(comment.commentable.location) %>
+              <% else %>
+                <%= link_to "Visit #{comment.commentable.name}", location_path(comment.commentable) %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </ul>

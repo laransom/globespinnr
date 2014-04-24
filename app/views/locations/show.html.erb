@@ -5,8 +5,8 @@
       <div class='info'>
         <h2><%= @location.name %></h2><br>
         <ul class="side-nav">
-          <li><%= link_to 'Add Photo', new_location_photo_path(@location) %></li>
-          <li><%= link_to 'Add Comment', new_location_comment_path(@location) %></li>
+          <li class='small button' id='button'><%= link_to 'Add Photo', new_location_photo_path(@location) %></li>
+          <li class='small button' id='button'><%= link_to 'Add Comment', new_location_comment_path(@location) %></li>
           <h5>Comments</h5>
           <div class='comments'>
             <ul class='small-block-grid-1 large-block-grid 1'>
