@@ -5,3 +5,21 @@
 #countries.dropdown:hover {
   overflow-y: auto;
 }
+
+li {
+  list-style-type: none;
+}
+
+.media {
+  display: block;
+}
+
+.media-img img {
+  float:left;
+  margin-right: 12px;
+  display:block;
+}
+
+#button a {
+  color: white;
+}

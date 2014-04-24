@@ -13,45 +13,47 @@
   </head>
 
   <body>
+    <div class='contain-to-grid sticky'>
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1><%= link_to 'Globespinnr', root_path%></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+        </ul>
 
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to 'Globespinnr', root_path%></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-      </ul>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <li class='has-dropdown'>
-          <a href="#">Choose Country</a>
-          <ul id="countries" class="dropdown">
-            <% Location.all.each do |location| %>
-              <li><%= link_to location.name, location_path(location) %></li>
-            <% end %>
-          </ul>
-        </li>
-
-        <% if user_signed_in? %>
-          <li class='avatar'><%= link_to image_tag(current_user.avatar.url('avatar')), user_path(current_user) %></li>
-        <% end %>
-        <li class="has-dropdown">
-          <% if !user_signed_in? %>
-            <a href="#">Welcome</a>
-            <ul class="dropdown">
-              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <li><%= link_to 'Sign In', new_user_session_path %></li>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class='has-dropdown'>
+            <a href="#">Choose Country</a>
+            <ul id="countries" class="dropdown">
+              <% Location.all.each do |location| %>
+                <li><%= link_to location.name, location_path(location) %></li>
+              <% end %>
             </ul>
-          <% else %>
-            <a href="#">Welcome <%= current_user.first_name %></a>
-            <ul class="dropdown">
-              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-            </ul>
+          </li>
+
+          <% if user_signed_in? %>
+            <li class='avatar'><%= link_to image_tag(current_user.avatar.url('avatar')), user_path(current_user) %></li>
           <% end %>
-        </li>
-      </ul>
-    </nav>
+          <li class="has-dropdown">
+            <% if !user_signed_in? %>
+              <a href="#">Welcome</a>
+              <ul class="dropdown">
+                <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+                <li><%= link_to 'Sign In', new_user_session_path %></li>
+              </ul>
+            <% else %>
+              <a href="#">Welcome <%= current_user.first_name %></a>
+              <ul class="dropdown">
+                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
     <% if flash[:notice].present? %>
       <div><%= flash[:notice] %></div>
