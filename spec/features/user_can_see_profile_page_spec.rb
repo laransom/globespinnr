@@ -20,13 +20,9 @@ feature 'user can go to their own profile page', %q{
       click_on 'a'
 
       expect(page).to have_content user.full_name
-      expect(page).to have_content 'Most liked photos'
+      expect(page).to have_content 'Popular Photos'
       expect(page).to have_content 'Recent Comments'
 
     end
-
-
   end
-
-
 end

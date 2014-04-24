@@ -17,7 +17,7 @@ feature 'delete photo from globespinnr', %q{
       photo_count = Photo.count
       visit location_path(photo.location)
 
-      within "#photos" do
+      within ".photos" do
         first(:link, 'a').click
       end
 
