@@ -17,6 +17,12 @@ Globespinnr::Application.routes.draw do
 
   resources :likes, only: [:create]
 
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+    resources :photos, only: [:index, :destroy]
+    resources :comments, only: [:index, :destroy]
+  end
+
   # resources :admin do
   #   resources :photos, only: [:destroy]
   #   resources :comments, only: [:edit, :destroy]

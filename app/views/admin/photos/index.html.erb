@@ -1,0 +1,13 @@
+<h1>Photos</h1>
+
+<ul>
+  <% @photos.each do |photo| %>
+    <li>
+      <%= image_tag(photo.image.url) %><br>
+        <%= link_to 'Delete Photo', admin_photo_path(photo), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Users', admin_users_path %><br>
+<%= link_to 'Comments', admin_comments_path %>

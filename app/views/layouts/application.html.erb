@@ -48,6 +48,9 @@
               <ul class="dropdown">
                 <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
                 <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+                <% if current_user.is_admin? %>
+                  <li><%= link_to 'Admin Section', admin_users_path %></li>
+                <% end %>
               </ul>
             <% end %>
           </li>

@@ -1,0 +1,13 @@
+<h1>Comments</h1>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <%= comment.body %><br>
+        <%= link_to 'Delete Comment', admin_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Users', admin_users_path %><br>
+<%= link_to 'Photos', admin_photos_path %>

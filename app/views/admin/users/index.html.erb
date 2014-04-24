@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.full_name %><br>
+        <%= link_to 'Delete User', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Comments', admin_comments_path %><br>
+<%= link_to 'Photos', admin_photos_path %>
