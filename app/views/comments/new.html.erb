@@ -1,13 +1,15 @@
-<h1>Add A Comment</h1>
+<h2 class='text-center'>Add A Comment</h2>
 
-<% if params[:location_id] == nil%>
-  <%= simple_form_for [@photo, @comment] do |f| %>
-    <%= f.input :body, as: :text %>
-    <%= f.button :submit, 'Add Comment' %>
-  <% end %>
-<% else %>
-    <%= simple_form_for [@location, @comment] do |f| %>
+<div class = 'large-8 large-centered columns '>
+  <% if params[:location_id] == nil%>
+    <%= simple_form_for [@photo, @comment] do |f| %>
       <%= f.input :body, as: :text %>
       <%= f.button :submit, 'Add Comment' %>
+    <% end %>
+  <% else %>
+      <%= simple_form_for [@location, @comment] do |f| %>
+        <%= f.input :body, as: :text %>
+        <%= f.button :submit, 'Add Comment' %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
