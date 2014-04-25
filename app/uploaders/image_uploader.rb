@@ -9,7 +9,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [900, 900]
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.production? || Rails.env.devlopment?
+  if Rails.env.production? || Rails.env.development?
     storage :fog
   else
     storage :file
@@ -25,9 +25,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "silhouette.jpg"].compact.join('_'))
+    # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "silhouette.jpg"].compact.join('_'))
     # "/assets/images/fallback/silhouette.jpg"
     # "/images/fallback/" + [version_name, "silhouette.jpg"].compact.join('_')
+    "https://s3.amazonaws.com/globespinnr-image-development/" + [version_name, 'silhouette.jpg'].compact.join('_')
+
   end
 
   # Process files as they are uploaded:
