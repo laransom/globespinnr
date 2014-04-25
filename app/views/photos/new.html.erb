@@ -1,12 +1,13 @@
-<h1>Upload New Photo</h1>
+<h2 class='text-center'>Upload New Photo</h2>
 
+<div class = 'large-8 large-centered columns '>
+  <%= simple_form_for [@location, @photo], html: { multipart: true } do |f| %>
 
-<%= simple_form_for [@location, @photo], html: { multipart: true } do |f| %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.input :description, as: :text %>
 
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-  <%= f.input :description, as: :text %>
+    <%= f.button :submit, 'Add Photo' %>
 
-  <%= f.button :submit, 'Add Photo' %>
-
-<% end %>
+  <% end %>
+</div>
