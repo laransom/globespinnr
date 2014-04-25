@@ -19,10 +19,10 @@
 
       var geometry   = new THREE.SphereGeometry(0.5, 32, 32);
       var material  = new THREE.MeshPhongMaterial();
-        material.map = THREE.ImageUtils.loadTexture("<%= asset_path('/assets/earthmap1k.jpg') %>");
-        material.bumpMap = THREE.ImageUtils.loadTexture("<%= asset_path('/assets/earthbump1k.jpg')%>");
+        material.map = THREE.ImageUtils.loadTexture("/images/earthmap1k.jpg");
+        material.bumpMap = THREE.ImageUtils.loadTexture("/images/earthbump1k.jpg");
         material.bumpScale = 0.05;
-        material.specularMap = THREE.ImageUtils.loadTexture("<%= asset_path('/assets/earthspec1k.jpg') %>");
+        material.specularMap = THREE.ImageUtils.loadTexture("/images/earthspec1k.jpg");
         material.specular = new THREE.Color('grey');
 
       var earthMesh = new THREE.Mesh(geometry, material);
@@ -33,7 +33,7 @@
 
       var geometry  = new THREE.SphereGeometry(90, 32, 32);
       var material  = new THREE.MeshBasicMaterial();
-        material.map   = THREE.ImageUtils.loadTexture("<%= asset_path('/assets/starfield.png') %>");
+        material.map   = THREE.ImageUtils.loadTexture("/images/starfield.png");
         material.side  = THREE.BackSide;
       var mesh  = new THREE.Mesh(geometry, material);
       scene.add(mesh);
