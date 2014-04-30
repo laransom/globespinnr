@@ -34,7 +34,7 @@ class PhotosController < ApplicationController
     if @photo.user == current_user
       @photo.destroy
       respond_to do |format|
-        format.html {redirect_to locations_path(@photo.location)}
+        format.html {redirect_to location_path(@photo.location)}
       end
     else
       flash[:alert] = 'Can not delete'
