@@ -4,9 +4,9 @@ class LocationsController < ApplicationController
     @locations = Location.all
   end
 
-
   def show
     @location = Location.find(params[:id])
+    @photos = @location.photos.page(params[:page]).per(20)
   end
 
 end
