@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id]).order(created_at: :desc)
+    @photo = Photo.find(params[:id])
     @like = Like.new
   end
 

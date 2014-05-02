@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def most_liked
-    photos.order(likes_count: :desc).limit(5)
+    photos.where("likes_count IS NOT NULL").order(likes_count: :desc).limit(5)
   end
 
   def recent_comments
