@@ -38,6 +38,8 @@ gem 'foundation-rails'
 
 gem 'fog'
 
+gem 'kaminari'
+
 group :production do
   gem 'rails_12factor'
 end

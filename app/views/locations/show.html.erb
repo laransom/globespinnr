@@ -10,7 +10,7 @@
           <h5>Comments</h5>
           <div class='comments'>
             <ul class='small-block-grid-1 large-block-grid 1'>
-              <% @location.comments.each do |comment| %>
+              <% @location.comments.order(created_at: :desc).limit(30).each do |comment| %>
                 <div class='panel'>
                   <div class='media'>
                     <div class='media-img'>
@@ -28,10 +28,12 @@
     </div>
   </div>
 
+
   <div class='small-9 large-9 columns text-center'>
+    <%= paginate @photos %>
     <div class='photos'>
       <ul class='small-block-grid-1 large-block-grid 1'>
-        <% @location.photos.each do |photo| %>
+        <% @photos.order(created_at: :desc).each do |photo| %>
           <li>
             <%= link_to image_tag(photo.image_url('show')), photo %>
           </li>
