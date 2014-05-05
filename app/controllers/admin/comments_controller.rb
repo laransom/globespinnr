@@ -3,7 +3,7 @@ module Admin
 
 
     def index
-      @comments = Comment.all
+      @comments = Comment.all.page(params[:page]).per(100)
     end
 
     def destroy
