@@ -43,7 +43,7 @@
     <div class='comments'>
       <h3 class = 'text-center'>Comments</h3>
       <ul class='small-block-grid-1 large-block-grid 1'>
-        <% @photo.comments.each do |comment| %>
+        <% @photo.comments.order(created_at: :desc).each do |comment| %>
           <div class='panel'>
             <div class='media'>
               <div class='media-img'>
