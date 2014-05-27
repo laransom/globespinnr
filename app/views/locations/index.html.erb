@@ -8,6 +8,8 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
+      var particleMaterial;
+
       camera.position.z = 1;
 
       scene.add(new THREE.AmbientLight(0xaaaaaa));
@@ -28,15 +30,36 @@
       var earthMesh = new THREE.Mesh(geometry, material);
       scene.add(earthMesh);
 
-      var trackballControls = new THREE.TrackballControls(camera, renderer.domElement );
-
-
       var geometry  = new THREE.SphereGeometry(90, 32, 32);
       var material  = new THREE.MeshBasicMaterial();
         material.map   = THREE.ImageUtils.loadTexture("/images/starfield.png");
         material.side  = THREE.BackSide;
       var mesh  = new THREE.Mesh(geometry, material);
       scene.add(mesh);
+
+      var projector = new THREE.Projector();
+
+      var trackballControls = new THREE.TrackballControls(camera, renderer.domElement );
+
+
+      $('canvas').dblclick(function() {
+        event.preventDefault();
+
+        var vector = new THREE.Vector3( ( event.clientX / window.innerWidth ) * 2 - 1, ( event.clientY / window.innerHeight ) * 2 + 1, 0.5);
+        projector.unprojectVector( vector, camera );
+
+        var raycaster = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+
+        var intersects = raycaster.intersectObjects( scene.children );
+
+        if ( intersects.length > 0 ) {
+          var particle = new THREE.Sprite( particleMaterial );
+          particle.position = intersects[ 0 ].point;
+          particle.scale.x = particle.scale.y = 16;
+          scene.add( particle );
+        }
+        window.location.assign("/locations/" + <%= rand(1..252) %>);
+      });
 
       var render = function () {
         requestAnimationFrame(render);
@@ -49,11 +72,6 @@
 
       render();
 
-
-      $('canvas').dblclick(function() {
-        event.preventDefault();
-        window.location.assign("/locations/" + <%= rand(1..252) %>);
-      });
 
       THREEx.WindowResize(renderer, camera);
 
