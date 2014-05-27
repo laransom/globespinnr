@@ -8,8 +8,6 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-      var particleMaterial;
-
       camera.position.z = 1;
 
       scene.add(new THREE.AmbientLight(0xaaaaaa));
@@ -39,7 +37,9 @@
 
       var projector = new THREE.Projector();
 
+
       var trackballControls = new THREE.TrackballControls(camera, renderer.domElement );
+
 
 
       $('canvas').dblclick(function() {
@@ -53,10 +53,9 @@
         var intersects = raycaster.intersectObjects( scene.children );
 
         if ( intersects.length > 0 ) {
-          var particle = new THREE.Sprite( particleMaterial );
-          particle.position = intersects[ 0 ].point;
-          particle.scale.x = particle.scale.y = 16;
-          scene.add( particle );
+
+          console.log(intersects[0].faceIndex);
+
         }
         window.location.assign("/locations/" + <%= rand(1..252) %>);
       });
